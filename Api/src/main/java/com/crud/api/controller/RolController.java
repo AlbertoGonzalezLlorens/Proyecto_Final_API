@@ -63,9 +63,9 @@ public class RolController {
 		return rol_actualizado;
 	}
 	
-	@DeleteMapping("/roles/{id_roles}")
-	public void eleiminarRol(@PathVariable(name="id_roles")Long id_roles) {
-		rolServiceImpl.eliminarRol(id_roles);
+	@DeleteMapping("/roles/{id_rol}")
+	public void eleiminarRol(@PathVariable(name="id_rol")Long id_rol) {
+		rolServiceImpl.eliminarRol(id_rol);
 	}
 	
 	
