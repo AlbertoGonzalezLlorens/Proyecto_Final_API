@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.crud.api.dao.IUsuarioDAO;
 import com.crud.api.dto.Usuario;
 
+@Service
 public class UsuarioServiceImpl implements IUsuarioService{
 	
 	//Utilizamos los metodos de la interface IUsuarioDAO, es como si instaciaramos.

@@ -9,7 +9,7 @@ import com.crud.api.dao.IRolDAO;
 import com.crud.api.dto.Rol;
 
 
-
+@Service
 public class RolServiceImpl implements IRolService{
 	
 	//Utilizamos los metodos de la interface IRolDAO, es como si instaciaramos.
