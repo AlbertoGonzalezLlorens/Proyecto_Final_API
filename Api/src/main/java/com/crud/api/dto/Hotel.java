@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,6 +46,7 @@ public class Hotel {
     @OneToMany
     @JoinColumn(name="id_hotel")
     private List<Habitacion> habitaciones;
+    
 	
 	//Constructores
 	
@@ -55,9 +58,8 @@ public class Hotel {
 	 * @param id
 	 * @param nombre
 	 * @param descripcion
-	 * @param direccion
-	 * @param dni
-	 * @param fecha
+	 * @param categoria
+	 * @param
 	 */
 	public Hotel(Long id_hotel, String nombre, String descripcion, int categoria,  Blob foto, Usuario id_registrador) {
 		//super();
