@@ -1,14 +1,5 @@
 package com.crud.api.dto;
 
-<<<<<<< Updated upstream
-public class Habitacion {
-
-	public Habitacion() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
-=======
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
@@ -220,4 +211,3 @@ public class Habitacion {
 		
 		
 	}
->>>>>>> Stashed changes
