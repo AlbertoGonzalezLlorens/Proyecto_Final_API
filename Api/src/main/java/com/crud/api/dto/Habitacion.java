@@ -20,132 +20,138 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="usuarios")//en caso que la tabla sea diferente
+@Table(name="habitaciones")//en caso que la tabla sea diferente
 public class Habitacion {
 	 
 		//Atributos de entidad cliente
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-		private Long id_usuario;
-		@Column(name = "nombre")//no hace falta si se llama igual
-		private String nombre;
-		@Column(name = "apellido")//no hace falta si se llama igual
-		private String apellido;
-		@Column(name = "email")//no hace falta si se llama igual
-		private String email;
-		@Column(name = "contraseña")//no hace falta si se llama igual
-		private String contraseña;
+
+		private Long id_habitacion;
+		@Column(name = "num_habitacion")//no hace falta si se llama igual
+		private int num_habitacion;
+		@Column(name = "tipo")//no hace falta si se llama igual
+		private String tipo;
+		@Column(name = "descripcion")//no hace falta si se llama igual
+		private String descripcion;
+		@Column(name = "precio")//no hace falta si se llama igual
+		private double precio;
 		@Column(name = "foto")//no hace falta si se llama igual
 		private Blob foto;
-		@Column(name = "telefono")//no hace falta si se llama igual
-		private int telefono;
 		
 	    @ManyToOne
-	    @JoinColumn(name="id_rol")
-	    private Rol rol;
-	    @OneToMany
-	    @JoinColumn(name="id_usuario")
-	    private List<Hotel> hotel;
+	    @JoinColumn(name="id_hotel")
+	    private Hotel hotel;
+	    
+
+		/*@OneToMany
+	    @JoinColumn(name="id_habitacion")
+	    private List<Hotel> hotel;*/
 		
 		//Constructores
 		
-		public Usuario() {
+		public Habitacion() {
 		
 		}
 
 		/**
-		 * @param id
-		 * @param nombre
-		 * @param apellido
-		 * @param direccion
-		 * @param dni
-		 * @param fecha
-		 */
-		public Usuario(Long id_usuario, String nombre, String apellido, String email, String contraseña, Blob foto, int telefono, Rol rol) {
-			//super();
-			this.id_usuario = id_usuario;
-			this.nombre = nombre;
-			this.apellido = apellido;
-			this.email = email;
-			this.contraseña = contraseña;
-			this.foto = foto;
-			this.telefono = telefono;
-			this.rol = rol;
-		}
 
-		
+		 * @param id_habitacion
+		 * @param num_habitacion
+		 * @param tipo
+		 * @param descripcion
+		 * @param precio
+		 * @param foto
+		 * @param hotel
+		 */
+		public Habitacion(Long id_habitacion, int num_habitacion, String tipo, String descripcion, double precio,
+				Blob foto, Hotel hotel) {
+			super();
+			this.id_habitacion = id_habitacion;
+			this.num_habitacion = num_habitacion;
+			this.tipo = tipo;
+			this.descripcion = descripcion;
+			this.precio = precio;
+			this.foto = foto;
+			this.hotel = hotel;
+		}
+    
+    
 		//Getters y Setters
 		
 
 		
+
+
+
 		/**
-		 * @return the id_usuario
+		 * @return the id_habitacion
 		 */
-		public Long getId_usuario() {
-			return id_usuario;
+		public Long getId_habitacion() {
+			return id_habitacion;
 		}
 
 		/**
-		 * @param id_usuario the id_usuario to set
+		 * @param id_habitacion the id_habitacion to set
 		 */
-		public void setId_usuario(Long id_usuario) {
-			this.id_usuario = id_usuario;
+		public void setId_habitacion(Long id_habitacion) {
+			this.id_habitacion = id_habitacion;
 		}
 
 		/**
-		 * @return the nombre
+		 * @return the num_habitacion
 		 */
-		public String getNombre() {
-			return nombre;
+		public int getNum_habitacion() {
+			return num_habitacion;
 		}
 
 		/**
-		 * @param nombre the nombre to set
+		 * @param num_habitacion the num_habitacion to set
 		 */
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
+		public void setNum_habitacion(int num_habitacion) {
+			this.num_habitacion = num_habitacion;
 		}
 
 		/**
-		 * @return the apellido
+		 * @return the tipo
 		 */
-		public String getApellido() {
-			return apellido;
+		public String getTipo() {
+			return tipo;
 		}
 
 		/**
-		 * @param apellido the apellido to set
+		 * @param tipo the tipo to set
 		 */
-		public void setApellido(String apellido) {
-			this.apellido = apellido;
+		public void setTipo(String tipo) {
+			this.tipo = tipo;
 		}
 
 		/**
-		 * @return the email
+		 * @return the descripcion
 		 */
-		public String getEmail() {
-			return email;
+		public String getDescripcion() {
+			return descripcion;
 		}
 
 		/**
-		 * @param email the email to set
+		 * @param descripcion the descripcion to set
 		 */
-		public void setEmail(String email) {
-			this.email = email;
+		public void setDescripcion(String descripcion) {
+			this.descripcion = descripcion;
 		}
 
 		/**
-		 * @return the contraseña
+		 * @return the precio
 		 */
-		public String getContraseña() {
-			return contraseña;
+		public double getPrecio() {
+			return precio;
 		}
 
 		/**
-		 * @param contraseña the contraseña to set
+		 * @param precio the precio to set
 		 */
-		public void setContraseña(String contraseña) {
-			this.contraseña = contraseña;
+		public void setPrecio(double precio) {
+			this.precio = precio;
 		}
 
 		/**
@@ -162,57 +168,46 @@ public class Habitacion {
 			this.foto = foto;
 		}
 
-		/**
-		 * @return the telefono
+		
+		/*
+		 * @return hotel
 		 */
-		public int getTelefono() {
-			return telefono;
-		}
-
-		/**
-		 * @param telefono the telefono to set
-		 */
-		public void setTelefono(int telefono) {
-			this.telefono = telefono;
-		}
-
-		/**
-		 * @return the rol
-		 */
-		public Rol getRol() {
-			return rol;
-		}
-
-		/**
-		 * @param rol the rol to set
-		 */
-		public void setRol(Rol rol) {
-			this.rol = rol;
-		}
-
-		/**
-		 * @return the video
-		 */
-		@JsonIgnore
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "Hotel")
-		public List<Hotel> getHotel() {
+		public Hotel getHotel() {
 			return hotel;
 		}
 
 		/**
-		 * @param video the video to set
+		 * @param hotel the hotel to set
 		 */
-		public void setHotel(List<Hotel> hotel) {
+		public void setHotel(Hotel hotel) {
 			this.hotel = hotel;
 		}
 
+	
+
+		/**
+		 * @return the hotel
+		 */
+		/*@JsonIgnore
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "Hotel")
+		public List<Hotel> getHotel() {
+			return hoteles;
+		}*/
+
+		/**
+		 * @param video the video to set
+		 *//*
+		public void setHotel(List<Hotel> hotel) {
+			this.hotel = hotel;
+		}*/
+
+
 		@Override
 		public String toString() {
-			return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", email="
-					+ email + ", contraseña=" + contraseña + ", foto=" + foto + ", telefono=" + telefono + ", rol=" + rol
-					+ "]";
+			return "Habitacion [id_habitacion=" + id_habitacion + ", num_habitacion=" + num_habitacion + ", tipo="
+					+ tipo + ", descripcion=" + descripcion + ", precio=" + precio + ", foto=" + foto + ", hotel="
+					+ hotel + "]";
 		}
-
 
 		
 		
