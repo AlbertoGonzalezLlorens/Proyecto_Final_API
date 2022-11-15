@@ -26,6 +26,7 @@ public class Habitacion {
 		//Atributos de entidad cliente
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+
 		private Long id_habitacion;
 		@Column(name = "num_habitacion")//no hace falta si se llama igual
 		private int num_habitacion;
@@ -54,6 +55,7 @@ public class Habitacion {
 		}
 
 		/**
+
 		 * @param id_habitacion
 		 * @param num_habitacion
 		 * @param tipo
@@ -73,13 +75,13 @@ public class Habitacion {
 			this.foto = foto;
 			this.hotel = hotel;
 		}
-		 
-
-		
+    
+    
 		//Getters y Setters
 		
 
 		
+
 
 
 		/**
@@ -165,6 +167,7 @@ public class Habitacion {
 		public void setFoto(Blob foto) {
 			this.foto = foto;
 		}
+
 		
 		/*
 		 * @return hotel

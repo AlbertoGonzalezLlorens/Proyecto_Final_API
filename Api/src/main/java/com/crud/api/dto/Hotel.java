@@ -171,6 +171,7 @@ public class Hotel {
 	 * @param video the video to set
 	 */
 	public void setHabitacion(List<Habitacion> habitaciones) {
+
 		this.habitaciones = habitaciones;
 	}
 
