@@ -43,10 +43,10 @@ public class Usuario  {
     @ManyToOne
     @JoinColumn(name="id_rol")
     private Rol rol;
-    /*@OneToMany
+    @OneToMany
     @JoinColumn(name="id_usuario")
     private List<Hotel> hotel;
-*/	
+	
 	//Constructores
 	
 	public Usuario() {
@@ -192,19 +192,19 @@ public class Usuario  {
 
 	/**
 	 * @return the video
-	 *//*
+	 */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Hotel")
 	public List<Hotel> getHotel() {
 		return hotel;
-	}*/
+	}
 
 	/**
 	 * @param video the video to set
-	 *//*
+	 */
 	public void setHotel(List<Hotel> hotel) {
 		this.hotel = hotel;
-	}*/
+	}
 
 	@Override
 	public String toString() {
