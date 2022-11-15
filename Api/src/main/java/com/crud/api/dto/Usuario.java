@@ -46,6 +46,18 @@ public class Usuario  {
     @OneToMany
     @JoinColumn(name="id_usuario")
     private List<Hotel> hotel;
+    @OneToMany
+    @JoinColumn(name="id_usuario")
+    private List<Reserva> reservas;
+    @OneToMany
+    @JoinColumn(name="id_usuario")
+    private List<AgreganFavoritos> agregarFavoritos;
+    @OneToMany
+    @JoinColumn(name="id_usuario")
+    private List<Comentan> comentan;
+    @OneToMany
+    @JoinColumn(name="id_usuario")
+    private List<Buscan> buscan;
 	
 	//Constructores
 	
@@ -205,6 +217,70 @@ public class Usuario  {
 	public void setHotel(List<Hotel> hotel) {
 		this.hotel = hotel;
 	}
+	
+	/**
+	 * @return the video
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
+	public List<Reserva> getReserva() {
+		return reservas;
+	}
+
+	/**
+	 * @param video the video to set
+	 */
+	public void setReserva(List<Reserva> reserva) {
+		this.reservas = reservas;
+	}
+	
+	/**
+	 * @return the video
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AgreganFavoritos")
+	public List<AgreganFavoritos> getAgreganFavoritos() {
+		return agregarFavoritos;
+	}
+
+	/**
+	 * @param video the video to set
+	 */
+	public void setAgreganFavoritos(List<AgreganFavoritos> agregarFavoritos) {
+		this.agregarFavoritos = agregarFavoritos;
+	}
+	
+	/**
+	 * @return the video
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Comentan")
+	public List<Comentan> getComentan() {
+		return comentan;
+	}
+
+	/**
+	 * @param video the video to set
+	 */
+	public void setComentan(List<Comentan> comentan) {
+		this.comentan = comentan;
+	}
+	
+	/**
+	 * @return the video
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Buscan")
+	public List<Buscan> getBuscan() {
+		return buscan;
+	}
+
+	/**
+	 * @param video the video to set
+	 */
+	public void setBuscan(List<Buscan> buscan) {
+		this.buscan = buscan;
+	}
 
 	@Override
 	public String toString() {
@@ -212,10 +288,4 @@ public class Usuario  {
 				+ email + ", contraseña=" + contraseña + ", foto=" + foto + ", telefono=" + telefono + ", rol=" + rol
 				+ "]";
 	}
-
-
-	
-	
-	
-	
 }
