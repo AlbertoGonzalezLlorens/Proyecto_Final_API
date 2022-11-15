@@ -44,9 +44,9 @@ public class Habitacion {
 	    private Hotel hotel;
 	    
 
-		/*@OneToMany
+		@OneToMany
 	    @JoinColumn(name="id_habitacion")
-	    private List<Hotel> hotel;*/
+	    private List<Reserva> reservas;
 		
 		//Constructores
 		
@@ -78,10 +78,6 @@ public class Habitacion {
     
     
 		//Getters y Setters
-		
-
-		
-
 
 
 		/**
@@ -188,18 +184,18 @@ public class Habitacion {
 		/**
 		 * @return the hotel
 		 */
-		/*@JsonIgnore
-		@OneToMany(fetch = FetchType.LAZY, mappedBy = "Hotel")
-		public List<Hotel> getHotel() {
-			return hoteles;
-		}*/
+		@JsonIgnore
+		@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reserva")
+		public List<Reserva> getReservas() {
+			return reservas;
+		}
 
 		/**
 		 * @param video the video to set
-		 *//*
-		public void setHotel(List<Hotel> hotel) {
-			this.hotel = hotel;
-		}*/
+		 */
+		public void setHotel(List<Reserva> reservas) {
+			this.reservas = reservas;
+		}
 
 
 		@Override

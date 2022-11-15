@@ -56,6 +56,13 @@ public class HotelController {
 		hotel_seleccionado.setDescripcion(hotel.getDescripcion());
 		hotel_seleccionado.setCategoria(hotel.getCategoria());
 		hotel_seleccionado.setFoto(hotel.getFoto());
+		hotel_seleccionado.setPais(hotel.getPais());
+		hotel_seleccionado.setProvincia(hotel.getProvincia());
+		hotel_seleccionado.setPoblacion(hotel.getPoblacion());
+		hotel_seleccionado.setDireccion(hotel.getDireccion());
+		hotel_seleccionado.setCodigo_postal(hotel.getCodigo_postal());
+		hotel_seleccionado.setLongitud(hotel.getLongitud());
+		hotel_seleccionado.setLatitud(hotel.getLatitud());
 		hotel_seleccionado.setId_registrador(hotel.getId_registrador());
 		
 		hotel_actualizado = hotelServiceImpl.actualizarHotel(hotel_seleccionado);
