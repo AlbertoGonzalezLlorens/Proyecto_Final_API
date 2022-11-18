@@ -27,7 +27,7 @@ public class Comentan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private Long id_comentan;
+	private Long id_comenta;
 	@Column(name = "valoracion")//no hace falta si se llama igual
 	private int valoracion;
 	@Column(name = "comentario")//no hace falta si se llama igual
@@ -52,7 +52,7 @@ public class Comentan {
 	 */
 	public Comentan(Long id_comentan, int valoracion, String comentario, Usuario usuario, Hotel hotel) {
 		super();
-		this.id_comentan = id_comentan;
+		this.id_comenta = id_comentan;
 		this.valoracion = valoracion;
 		this.comentario = comentario;
 		this.usuario = usuario;
@@ -63,14 +63,14 @@ public class Comentan {
 	 * @return the id_comentan
 	 */
 	public Long getId_comentan() {
-		return id_comentan;
+		return id_comenta;
 	}
 
 	/**
 	 * @param id_comentan the id_comentan to set
 	 */
-	public void setId_comentan(Long id_comentan) {
-		this.id_comentan = id_comentan;
+	public void setId_comentan(Long id_comenta) {
+		this.id_comenta = id_comenta;
 	}
 
 	/**
@@ -131,7 +131,7 @@ public class Comentan {
 
 	@Override
 	public String toString() {
-		return "Comentan [id_comentan=" + id_comentan + ", valoracion=" + valoracion + ", comentario=" + comentario
+		return "Comentan [id_comentan=" + id_comenta + ", valoracion=" + valoracion + ", comentario=" + comentario
 				+ ", usuario=" + usuario + ", hotel=" + hotel + "]";
 	}
 	

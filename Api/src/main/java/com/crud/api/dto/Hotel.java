@@ -372,8 +372,7 @@ public class Hotel {
 		return "Hotel [id_hotel=" + id_hotel + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria="
 				+ categoria + ", foto=" + foto + ", pais=" + pais + ", provincia=" + provincia + ", poblacion="
 				+ poblacion + ", direccion=" + direccion + ", codigo_postal=" + codigo_postal + ", longitud=" + longitud
-				+ ", latitud=" + latitud + ", id_registrador=" + id_registrador +", contactos=" + contactos
-				+ "]";
+				+ ", latitud=" + latitud + ", id_registrador=" + id_registrador + "]";
 	}
 
 	

@@ -28,7 +28,7 @@ public class HabitacionController {
 	}
 	
 	@PostMapping("/habitaciones")
-	public Habitacion salvarHabitacion(@RequestBody Habitacion habitacion) {
+	public Habitacion salvarHabitacion( Habitacion habitacion) {
 		
 		return habitacionServiceImpl.guardarHabitacion(habitacion);
 	}
@@ -46,7 +46,7 @@ public class HabitacionController {
 	}
 	
 	@PutMapping("/habitaciones/{id_habitacion}")
-	public Habitacion actualizarHabitacion(@PathVariable(name="id_habitacion")Long id_habitacion,@RequestBody Habitacion habitacion) {
+	public Habitacion actualizarHabitacion(@PathVariable(name="id_habitacion")Long id_habitacion, Habitacion habitacion) {
 		
 		Habitacion habitacion_seleccionado= new Habitacion();
 		Habitacion habitacion_actualizado= new Habitacion();

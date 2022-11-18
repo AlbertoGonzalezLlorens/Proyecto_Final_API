@@ -147,7 +147,7 @@ public class Factura {
 	@Override
 	public String toString() {
 		return "Factura [id_factura=" + id_factura + ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin
-				+ ", numero_personas=" + numero_personas + ", desayuno=" + desayuno + ", reservas=" + reservas + "]";
+				+ ", numero_personas=" + numero_personas + ", desayuno=" + desayuno +"]";
 	}
 
 	
