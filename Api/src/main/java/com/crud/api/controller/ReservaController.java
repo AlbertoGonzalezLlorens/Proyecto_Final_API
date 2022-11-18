@@ -28,7 +28,7 @@ public class ReservaController {
 	}
 
 	@PostMapping("/reservas")
-	public Reserva salvarReserva(Reserva reserva) {
+	public Reserva salvarReserva(@RequestBody Reserva reserva) {
 
 		return reservaServiceImpl.guardarReserva(reserva);
 	}
@@ -46,7 +46,7 @@ public class ReservaController {
 	}
 
 	@PutMapping("/reservas/{id_reserva}")
-	public Reserva actualizarReserva(@PathVariable(name = "id_reserva") Long id_reserva, Reserva reserva) {
+	public Reserva actualizarReserva(@PathVariable(name = "id_reserva") Long id_reserva,@RequestBody Reserva reserva) {
 
 		Reserva reserva_seleccionado = new Reserva();
 		Reserva reserva_actualizado = new Reserva();

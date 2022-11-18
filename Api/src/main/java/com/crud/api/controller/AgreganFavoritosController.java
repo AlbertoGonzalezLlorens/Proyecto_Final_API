@@ -28,7 +28,7 @@ public class AgreganFavoritosController {
 	}
 
 	@PostMapping("/favoritos")
-	public AgreganFavoritos salvarAgreganFavorito(AgreganFavoritos agregan_favorito) {
+	public AgreganFavoritos salvarAgreganFavorito(@RequestBody AgreganFavoritos agregan_favorito) {
 
 		return agregan_favoritoServiceImpl.guardarAgreganFavoritos(agregan_favorito);
 	}
@@ -46,7 +46,7 @@ public class AgreganFavoritosController {
 	}
 
 	@PutMapping("/favoritos/{id_agregan_favoritos}")
-	public AgreganFavoritos actualizarAgreganFavorito(@PathVariable(name = "id_agregan_favoritos") Long id_agregan_favorito, AgreganFavoritos agregan_favorito) {
+	public AgreganFavoritos actualizarAgreganFavorito(@PathVariable(name = "id_agregan_favoritos") Long id_agregan_favorito,@RequestBody AgreganFavoritos agregan_favorito) {
 
 		AgreganFavoritos agregan_favorito_seleccionado = new AgreganFavoritos();
 		AgreganFavoritos agregan_favorito_actualizado = new AgreganFavoritos();

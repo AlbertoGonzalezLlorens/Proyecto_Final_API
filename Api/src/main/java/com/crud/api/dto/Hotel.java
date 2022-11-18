@@ -269,20 +269,6 @@ public class Hotel {
 	}
 
 	/**
-	 * @return the habitaciones
-	 */
-	public List<Habitacion> getHabitaciones() {
-		return habitaciones;
-	}
-
-	/**
-	 * @param habitaciones the habitaciones to set
-	 */
-	public void setHabitaciones(List<Habitacion> habitaciones) {
-		this.habitaciones = habitaciones;
-	}
-
-	/**
 	 * @return the id_registrador
 	 */
 	public Usuario getId_registrador() {
@@ -302,7 +288,7 @@ public class Hotel {
 	 * @return the habitacion
 	 */
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Habitacion")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id_hotel")
 	public List<Habitacion> getHabitacion() {
 		return habitaciones;
 	}
@@ -386,8 +372,7 @@ public class Hotel {
 		return "Hotel [id_hotel=" + id_hotel + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria="
 				+ categoria + ", foto=" + foto + ", pais=" + pais + ", provincia=" + provincia + ", poblacion="
 				+ poblacion + ", direccion=" + direccion + ", codigo_postal=" + codigo_postal + ", longitud=" + longitud
-				+ ", latitud=" + latitud + ", id_registrador=" + id_registrador + ", habitaciones=" 
-				+ habitaciones + ", contactos=" + contactos
+				+ ", latitud=" + latitud + ", id_registrador=" + id_registrador +", contactos=" + contactos
 				+ "]";
 	}
 

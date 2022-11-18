@@ -28,7 +28,7 @@ public class HotelController {
 	}
 
 	@PostMapping("/hoteles")
-	public Hotel salvarHotel(Hotel hotel) {
+	public Hotel salvarHotel(@RequestBody Hotel hotel) {
 
 		return hotelServiceImpl.guardarHotel(hotel);
 	}
@@ -46,7 +46,7 @@ public class HotelController {
 	}
 
 	@PutMapping("/hoteles/{id_hotel}")
-	public Hotel actualizarHotel(@PathVariable(name = "id_hotel") Long id_hotel, Hotel hotel) {
+	public Hotel actualizarHotel(@PathVariable(name = "id_hotel") Long id_hotel,@RequestBody Hotel hotel) {
 
 		Hotel hotel_seleccionado = new Hotel();
 		Hotel hotel_actualizado = new Hotel();

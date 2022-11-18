@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.crud.api.dto.Habitacion;
 import com.crud.api.service.HabitacionServiceImpl;
 
-
 @RestController
 @RequestMapping("/api")
 
 public class HabitacionController {
 
-	
 	@Autowired
 	HabitacionServiceImpl habitacionServiceImpl;
 	
@@ -30,7 +28,7 @@ public class HabitacionController {
 	}
 	
 	@PostMapping("/habitaciones")
-	public Habitacion salvarHabitacion(Habitacion habitacion) {
+	public Habitacion salvarHabitacion(@RequestBody Habitacion habitacion) {
 		
 		return habitacionServiceImpl.guardarHabitacion(habitacion);
 	}
@@ -48,7 +46,7 @@ public class HabitacionController {
 	}
 	
 	@PutMapping("/habitaciones/{id_habitacion}")
-	public Habitacion actualizarHabitacion(@PathVariable(name="id_habitacion")Long id_habitacion,Habitacion habitacion) {
+	public Habitacion actualizarHabitacion(@PathVariable(name="id_habitacion")Long id_habitacion,@RequestBody Habitacion habitacion) {
 		
 		Habitacion habitacion_seleccionado= new Habitacion();
 		Habitacion habitacion_actualizado= new Habitacion();

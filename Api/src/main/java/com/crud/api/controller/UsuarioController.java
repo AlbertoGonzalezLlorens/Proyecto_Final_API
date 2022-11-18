@@ -30,7 +30,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/usuarios")
-	public Usuario salvarUsuario(Usuario usuario) {
+	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
 		
 		return usuarioServiceImpl.guardarUsuario(usuario);
 	}
@@ -48,14 +48,14 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/usuarios/{id_usuario}")
-	public Usuario actualizarUsuario(@PathVariable(name="id_usuario")Long id_usuario,Usuario usuario) {
+	public Usuario actualizarUsuario(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody Usuario usuario) {
 		
 		Usuario usuario_seleccionado= new Usuario();
 		Usuario usuario_actualizado= new Usuario();
 		
 		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
 		usuario_seleccionado.setNombre(usuario.getNombre());
-		usuario_seleccionado.setApellido(usuario.getApellido());
+		usuario_seleccionado.setApellidos(usuario.getApellidos());
 		usuario_seleccionado.setEmail(usuario.getEmail());
 		usuario_seleccionado.setContraseña(usuario.getContraseña());
 		usuario_seleccionado.setFoto(usuario.getFoto());

@@ -29,8 +29,8 @@ public class Usuario  {
 	private Long id_usuario;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
-	@Column(name = "apellido")//no hace falta si se llama igual
-	private String apellido;
+	@Column(name = "apellidos")//no hace falta si se llama igual
+	private String apellidos;
 	@Column(name = "email")//no hace falta si se llama igual
 	private String email;
 	@Column(name = "contraseña")//no hace falta si se llama igual
@@ -73,11 +73,11 @@ public class Usuario  {
 	 * @param dni
 	 * @param fecha
 	 */
-	public Usuario(Long id_usuario, String nombre, String apellido, String email, String contraseña, Blob foto, int telefono, Rol rol) {
+	public Usuario(Long id_usuario, String nombre, String apellidos, String email, String contraseña, Blob foto, int telefono, Rol rol) {
 		//super();
 		this.id_usuario = id_usuario;
 		this.nombre = nombre;
-		this.apellido = apellido;
+		this.apellidos = apellidos;
 		this.email = email;
 		this.contraseña = contraseña;
 		this.foto = foto;
@@ -121,15 +121,15 @@ public class Usuario  {
 	/**
 	 * @return the apellido
 	 */
-	public String getApellido() {
-		return apellido;
+	public String getApellidos() {
+		return apellidos;
 	}
 
 	/**
 	 * @param apellido the apellido to set
 	 */
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	/**
@@ -284,7 +284,7 @@ public class Usuario  {
 
 	@Override
 	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", email="
+		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email="
 				+ email + ", contraseña=" + contraseña + ", foto=" + foto + ", telefono=" + telefono + ", rol=" + rol
 				+ "]";
 	}

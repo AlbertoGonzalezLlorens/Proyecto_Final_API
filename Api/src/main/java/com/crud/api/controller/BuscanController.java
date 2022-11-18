@@ -28,7 +28,7 @@ public class BuscanController {
 	}
 
 	@PostMapping("/busquedas")
-	public Buscan salvarBuscan(Buscan buscan) {
+	public Buscan salvarBuscan(@RequestBody Buscan buscan) {
 
 		return buscanServiceImpl.guardarBuscan(buscan);
 	}
@@ -46,7 +46,7 @@ public class BuscanController {
 	}
 
 	@PutMapping("/busquedas/{id_buscan}")
-	public Buscan actualizarBuscan(@PathVariable(name = "id_buscan") Long id_buscan, Buscan buscan) {
+	public Buscan actualizarBuscan(@PathVariable(name = "id_buscan") Long id_buscan,@RequestBody Buscan buscan) {
 
 		Buscan buscan_seleccionado = new Buscan();
 		Buscan buscan_actualizado = new Buscan();

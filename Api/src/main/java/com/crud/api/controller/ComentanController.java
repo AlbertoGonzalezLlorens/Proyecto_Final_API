@@ -28,7 +28,7 @@ public class ComentanController {
 	}
 
 	@PostMapping("/comentarios")
-	public Comentan salvarComentan(Comentan comentan) {
+	public Comentan salvarComentan(@RequestBody Comentan comentan) {
 
 		return comentanServiceImpl.guardarComentan(comentan);
 	}
@@ -46,7 +46,7 @@ public class ComentanController {
 	}
 
 	@PutMapping("/comentarios/{id_comentan}")
-	public Comentan actualizarComentan(@PathVariable(name = "id_comentan") Long id_comentan, Comentan comentan) {
+	public Comentan actualizarComentan(@PathVariable(name = "id_comentan") Long id_comentan,@RequestBody Comentan comentan) {
 
 		Comentan comentan_seleccionado = new Comentan();
 		Comentan comentan_actualizado = new Comentan();

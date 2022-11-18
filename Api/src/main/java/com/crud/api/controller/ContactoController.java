@@ -28,7 +28,7 @@ public class ContactoController {
 	}
 
 	@PostMapping("/contactos")
-	public Contacto salvarContacto(Contacto contacto) {
+	public Contacto salvarContacto(@RequestBody Contacto contacto) {
 
 		return contactoServiceImpl.guardarContacto(contacto);
 	}
@@ -46,7 +46,7 @@ public class ContactoController {
 	}
 
 	@PutMapping("/contactos/{id_contacto}")
-	public Contacto actualizarContacto(@PathVariable(name = "id_contacto") Long id_contacto, Contacto contacto) {
+	public Contacto actualizarContacto(@PathVariable(name = "id_contacto") Long id_contacto,@RequestBody Contacto contacto) {
 
 		Contacto contacto_seleccionado = new Contacto();
 		Contacto contacto_actualizado = new Contacto();

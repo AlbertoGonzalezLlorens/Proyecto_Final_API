@@ -30,7 +30,7 @@ public class FacturaController {
 	}
 	
 	@PostMapping("/facturas")
-	public Factura salvarFactura(Factura factura) {
+	public Factura salvarFactura(@RequestBody Factura factura) {
 		
 		return facturaServiceImpl.guardarFactura(factura);
 	}
@@ -48,7 +48,7 @@ public class FacturaController {
 	}
 	
 	@PutMapping("/facturas/{id_factura}")
-	public Factura actualizarFactura(@PathVariable(name="id_factura")Long id_factura,Factura factura) {
+	public Factura actualizarFactura(@PathVariable(name="id_factura")Long id_factura,@RequestBody Factura factura) {
 		
 		Factura factura_seleccionado= new Factura();
 		Factura factura_actualizado= new Factura();

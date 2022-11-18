@@ -1,5 +1,5 @@
-/*drop database if exists proyecto;
-create database proyecto;
+/*drop database if exists proyecto;*/
+/*create database proyecto;
 use proyecto;*/
 
 drop table if exists roles;
@@ -7,6 +7,9 @@ create table roles(
 id_rol long auto_increment primary key,
 nombre varchar (50) not null
 );
+
+insert into roles (nombre) values ('admin');
+insert into roles (nombre) values ('loser');
 
 drop table if exists usuarios;
 create table usuarios(
@@ -20,6 +23,9 @@ telefono int,
 id_rol int not null,
 foreign key (id_rol) references roles(id_rol) on delete cascade on update cascade
 );
+
+insert into usuarios (nombre,apellidos,email,contraseña,foto,telefono,id_rol) values ('Ivan','D. Panetone','ivanhrt@gmail.com','legustangrandes',null,659852147,2);
+insert into usuarios (nombre,apellidos,email,contraseña,foto,telefono,id_rol) values ('Alberto','D. God','diosito@gmail.com','catacrack',null,659852148,1);
 
 drop table if exists hoteles;
 create table hoteles(
@@ -39,6 +45,9 @@ id_registrador int not null,
 foreign key (id_registrador) references usuarios(id_usuario) on delete set null on update cascade
 );
 
+insert into hoteles (nombre,descripcion,categoria,foto,pais,provincia,poblacion,direccion,codigo_postal,longitud,latitud,id_registrador) values ('Hotel I','Not bad',3,null,'nuncajamas','provicnia','poblacion1','Dirección1',45362,1.25874,0.23657,1);
+insert into hoteles (nombre,descripcion,categoria,foto,pais,provincia,poblacion,direccion,codigo_postal,longitud,latitud,id_registrador) values ('Hotel A','God',5,null,'la ostia','paraiso','poblacion2','Dirección2',33568,2.3547,1.23657,2);
+
 drop table if exists habitaciones;
 create table habitaciones(
 id_habitacion int auto_increment primary key,
@@ -50,6 +59,9 @@ foto blob,
 id_hotel int not null,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
+
+insert into habitaciones (num_habitacion,tipo,descripcion,precio,foto,id_hotel) values (111,'cool','Coolx2',12.35,null,1);
+insert into habitaciones (num_habitacion,tipo,descripcion,precio,foto,id_hotel) values (112,'super cool','super Coolx2',22.35,null,2);
 
 drop table if exists contactos;
 create table contactos(
