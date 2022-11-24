@@ -1,6 +1,6 @@
 /*drop database if exists proyecto;*/
-/*create database proyecto;
-use proyecto;*/
+/*create database proyecto;*/
+use railway;
 
 drop table if exists roles;
 create table roles(
@@ -24,7 +24,7 @@ id_rol int not null,
 foreign key (id_rol) references roles(id_rol) on delete cascade on update cascade
 );
 
-insert into usuarios (nombre,apellidos,email,contraseña,foto,telefono,id_rol) values ('Ivan','D. Panetone','ivanhrt@gmail.com','legustangrandes',null,659852147,2);
+insert into usuarios (nombre,apellidos,email,contraseña,foto,telefono,id_rol) values ('Ivan','D. Panetone','ivanhrt@gmail.com','contraseñadeejemplo',null,659852147,2);
 insert into usuarios (nombre,apellidos,email,contraseña,foto,telefono,id_rol) values ('Alberto','D. God','diosito@gmail.com','catacrack',null,659852148,1);
 
 drop table if exists hoteles;
@@ -137,5 +137,5 @@ foreign key (id_usuario) references usuarios(id_usuario) on delete cascade on up
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
 
-/*insert into buscan (id_usuario,id_hotel) values (1,1);
-insert into buscan (id_usuario,id_hotel) values (2,2);*/
+insert into buscan (id_usuario,id_hotel) values (1,1);
+insert into buscan (id_usuario,id_hotel) values (2,2);

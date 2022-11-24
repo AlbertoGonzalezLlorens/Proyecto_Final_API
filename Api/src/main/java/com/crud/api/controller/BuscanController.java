@@ -33,25 +33,25 @@ public class BuscanController {
 		return buscanServiceImpl.guardarBuscan(buscan);
 	}
 
-	@GetMapping("/busquedas/{id_buscan}")
-	public Buscan buscanXID(@PathVariable(name = "id_buscan") Long id_buscan) {
+	@GetMapping("/busquedas/{id_busca}")
+	public Buscan buscanXID(@PathVariable(name = "id_busca") Long id_busca) {
 
 		Buscan buscan_xid = new Buscan();
 
-		buscan_xid = buscanServiceImpl.buscanXID(id_buscan);
+		buscan_xid = buscanServiceImpl.buscanXID(id_busca);
 
 		System.out.println("Buscan XID: " + buscan_xid);
 
 		return buscan_xid;
 	}
 
-	@PutMapping("/busquedas/{id_buscan}")
-	public Buscan actualizarBuscan(@PathVariable(name = "id_buscan") Long id_buscan,@RequestBody Buscan buscan) {
+	@PutMapping("/busquedas/{id_busca}")
+	public Buscan actualizarBuscan(@PathVariable(name = "id_busca") Long id_busca,@RequestBody Buscan buscan) {
 
 		Buscan buscan_seleccionado = new Buscan();
 		Buscan buscan_actualizado = new Buscan();
 
-		buscan_seleccionado = buscanServiceImpl.buscanXID(id_buscan);
+		buscan_seleccionado = buscanServiceImpl.buscanXID(id_busca);
 		buscan_seleccionado.setHotel(buscan.getHotel());
 		buscan_seleccionado.setUsuario(buscan.getUsuario());		
 		
@@ -62,9 +62,9 @@ public class BuscanController {
 		return buscan_actualizado;
 	}
 
-	@DeleteMapping("/busquedas/{id_buscan}")
-	public void eleiminarBuscan(@PathVariable(name = "id_buscan") Long id_buscan) {
-		buscanServiceImpl.eliminarBuscan(id_buscan);
+	@DeleteMapping("/busquedas/{id_busca}")
+	public void eleiminarBuscan(@PathVariable(name = "id_busca") Long id_busca) {
+		buscanServiceImpl.eliminarBuscan(id_busca);
 	}
 
 }

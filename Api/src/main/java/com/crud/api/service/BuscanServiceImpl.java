@@ -29,9 +29,9 @@ public class BuscanServiceImpl implements IBuscanService{
 	}
 
 	@Override
-	public Buscan buscanXID(Long id_buscan) {
+	public Buscan buscanXID(Long id_busca) {
 		
-		return iBuscanDAO.findById(id_buscan).get();
+		return iBuscanDAO.findById(id_busca).get();
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class BuscanServiceImpl implements IBuscanService{
 	}
 
 	@Override
-	public void eliminarBuscan(Long id_buscan) {
+	public void eliminarBuscan(Long id_busca) {
 		
-		iBuscanDAO.deleteById(id_buscan);
+		iBuscanDAO.deleteById(id_busca);
 		
 	}
 

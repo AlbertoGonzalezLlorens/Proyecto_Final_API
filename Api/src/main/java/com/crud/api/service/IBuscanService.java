@@ -11,10 +11,10 @@ public interface IBuscanService {
 		
 		public Buscan guardarBuscan(Buscan buscan);	//Guarda un Buscan CREATE
 		
-		public Buscan buscanXID(Long id_buscan); //Leer datos de un Buscan READ
+		public Buscan buscanXID(Long id_busca); //Leer datos de un Buscan READ
 		
 		public Buscan actualizarBuscan(Buscan buscan); //Actualiza datos del Buscan UPDATE
 		
-		public void eliminarBuscan(Long id_buscan);// Elimina el Buscan DELETE
+		public void eliminarBuscan(Long id_busca);// Elimina el Buscan DELETE
 
 }

@@ -27,7 +27,7 @@ public class Buscan {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
-	private Long id_buscan;
+	private Long id_busca;
 	@ManyToOne
     @JoinColumn(name="id_usuario")
     private Usuario usuario;
@@ -40,29 +40,29 @@ public class Buscan {
 	}
 
 	/**
-	 * @param id_buscan
+	 * @param id_busca
 	 * @param usuario
 	 * @param hotel
 	 */
-	public Buscan(Long id_buscan, Usuario usuario, Hotel hotel) {
+	public Buscan(Long id_busca, Usuario usuario, Hotel hotel) {
 		super();
-		this.id_buscan = id_buscan;
+		this.id_busca = id_busca;
 		this.usuario = usuario;
 		this.hotel = hotel;
 	}
 
 	/**
-	 * @return the id_buscan
+	 * @return the id_busca
 	 */
 	public Long getId_buscan() {
-		return id_buscan;
+		return id_busca;
 	}
 
 	/**
-	 * @param id_buscan the id_buscan to set
+	 * @param id_busca the id_busca to set
 	 */
-	public void setId_buscan(Long id_buscan) {
-		this.id_buscan = id_buscan;
+	public void setId_buscan(Long id_busca) {
+		this.id_busca = id_busca;
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class Buscan {
 
 	@Override
 	public String toString() {
-		return "Buscan [id_buscan=" + id_buscan + ", usuario=" + usuario + ", hotel=" + hotel + "]";
+		return "Buscan [id_busca=" + id_busca + ", usuario=" + usuario + ", hotel=" + hotel + "]";
 	}
 	
 	
