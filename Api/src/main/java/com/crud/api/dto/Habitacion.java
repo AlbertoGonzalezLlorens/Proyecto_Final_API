@@ -193,7 +193,7 @@ public class Habitacion {
 		/**
 		 * @param video the video to set
 		 */
-		public void setHotel(List<Reserva> reservas) {
+		public void setReservas(List<Reserva> reservas) {
 			this.reservas = reservas;
 		}
 
