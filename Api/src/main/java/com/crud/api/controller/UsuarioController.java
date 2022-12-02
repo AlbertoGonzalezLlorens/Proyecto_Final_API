@@ -3,6 +3,7 @@ package com.crud.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.crud.api.dto.Usuario;
 import com.crud.api.service.UsuarioServiceImpl;
+import com.crud.api.dao.IUsuarioDAO;
 
 
 @RestController
@@ -20,21 +23,23 @@ import com.crud.api.service.UsuarioServiceImpl;
 
 public class UsuarioController {
 
+	private IUsuarioDAO iUsuarioDAO;
+
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	public UsuarioController(IUsuarioDAO iUsuarioDAO, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.iUsuarioDAO = iUsuarioDAO;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
 	
 	@Autowired
 	UsuarioServiceImpl usuarioServiceImpl;
 	
-	@GetMapping("/usuarios")
-	public List<Usuario> listarRoles(){
+	@GetMapping("/usuarios/")
+	public List<Usuario> listarUsuarios() {
 		return usuarioServiceImpl.listarUsuario();
 	}
-	
-	@PostMapping("/usuarios")
-	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
-		
-		return usuarioServiceImpl.guardarUsuario(usuario);
-	}
-	
+
 	@GetMapping("/usuarios/{id_usuario}")
 	public Usuario usuarioXID(@PathVariable(name="id_usuario") Long id_usuario) {
 		
@@ -42,9 +47,16 @@ public class UsuarioController {
 		
 		usuario_xid=usuarioServiceImpl.usuarioXID(id_usuario);
 		
-		System.out.println("Usuario XID: "+usuario_xid);
+		System.out.println("Rol XID: "+id_usuario);
 		
 		return usuario_xid;
+	}
+	
+	@PostMapping("/usuarios/")
+	public Usuario saveUsuario(@RequestBody Usuario user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		iUsuarioDAO.save(user);
+		return user;
 	}
 	
 	@PutMapping("/usuarios/{id_usuario}")
@@ -54,10 +66,11 @@ public class UsuarioController {
 		Usuario usuario_actualizado= new Usuario();
 		
 		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
+		usuario_seleccionado.setUsername(usuario.getUsername());
 		usuario_seleccionado.setNombre(usuario.getNombre());
 		usuario_seleccionado.setApellidos(usuario.getApellidos());
 		usuario_seleccionado.setEmail(usuario.getEmail());
-		usuario_seleccionado.setContraseña(usuario.getContraseña());
+		usuario_seleccionado.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
 		usuario_seleccionado.setFoto(usuario.getFoto());
 		usuario_seleccionado.setTelefono(usuario.getTelefono());
 		usuario_seleccionado.setRol(usuario.getRol());

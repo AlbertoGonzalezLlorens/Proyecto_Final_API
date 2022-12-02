@@ -27,18 +27,21 @@ public class Usuario  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private Long id_usuario;
+	@Column(name = "username")//no hace falta si se llama igual
+	private String username;
 	@Column(name = "nombre")//no hace falta si se llama igual
 	private String nombre;
 	@Column(name = "apellidos")//no hace falta si se llama igual
 	private String apellidos;
 	@Column(name = "email")//no hace falta si se llama igual
 	private String email;
-	@Column(name = "contraseña")//no hace falta si se llama igual
-	private String contraseña;
+	@Column(name = "password")//no hace falta si se llama igual
+	private String password;
 	@Column(name = "foto")//no hace falta si se llama igual
 	private Blob foto;
 	@Column(name = "telefono")//no hace falta si se llama igual
 	private int telefono;
+	
 	
     @ManyToOne
     @JoinColumn(name="id_rol")
@@ -73,13 +76,14 @@ public class Usuario  {
 	 * @param dni
 	 * @param fecha
 	 */
-	public Usuario(Long id_usuario, String nombre, String apellidos, String email, String contraseña, Blob foto, int telefono, Rol rol) {
+	public Usuario(Long id_usuario,String username, String nombre, String apellidos, String email, String password, Blob foto, int telefono, Rol rol) {
 		//super();
 		this.id_usuario = id_usuario;
+		this.username = username;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
-		this.contraseña = contraseña;
+		this.password = password;
 		this.foto = foto;
 		this.telefono = telefono;
 		this.rol = rol;
@@ -102,6 +106,14 @@ public class Usuario  {
 	 */
 	public void setId_usuario(Long id_usuario) {
 		this.id_usuario = id_usuario;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	/**
@@ -149,15 +161,15 @@ public class Usuario  {
 	/**
 	 * @return the contraseña
 	 */
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 
 	/**
 	 * @param contraseña the contraseña to set
 	 */
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	/**
@@ -191,6 +203,7 @@ public class Usuario  {
 	/**
 	 * @return the rol
 	 */
+	
 	public Rol getRol() {
 		return rol;
 	}
@@ -284,8 +297,8 @@ public class Usuario  {
 
 	@Override
 	public String toString() {
-		return "Usuario [id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email="
-				+ email + ", contraseña=" + contraseña + ", foto=" + foto + ", telefono=" + telefono + ", rol=" + rol
+		return "Usuario [id_usuario=" + id_usuario + ", username=" + username + ", nombre=" + nombre + ", apellidos=" + apellidos + ", email="
+				+ email + ", password=" + password + ", foto=" + foto + ", telefono=" + telefono + ", rol=" + rol
 				+ "]";
 	}
 }
