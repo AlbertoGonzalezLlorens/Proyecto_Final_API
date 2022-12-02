@@ -39,14 +39,9 @@ public class UsuarioController {
 	public List<Usuario> listarUsuarios() {
 		return usuarioServiceImpl.listarUsuario();
 	}
-	
-	@GetMapping("/usuarios/{username}")
-	public Usuario getUsuario(@PathVariable(name="username") String username) {
-		return iUsuarioDAO.findByUsername(username);
-	}
 
 	@GetMapping("/usuarios/{id_usuario}")
-	public Usuario usuarioXIDXID(@PathVariable(name="id_usuario") Long id_usuario) {
+	public Usuario usuarioXID(@PathVariable(name="id_usuario") Long id_usuario) {
 		
 		Usuario usuario_xid= new Usuario();
 		
