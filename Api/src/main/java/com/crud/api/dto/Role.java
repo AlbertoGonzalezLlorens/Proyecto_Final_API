@@ -20,14 +20,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="roles")
-public class Rol {
+public class Role {
 
 	//Atributos de entidad cliente
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
 	private Long id_rol;
-	@Column(name = "nombre")//no hace falta si se llama igual
-	private String nombre;
+	@Column(name = "role")//no hace falta si se llama igual
+	private String role;
 
 	
     @OneToMany
@@ -36,7 +36,7 @@ public class Rol {
 	
 	//Constructores
 	
-	public Rol() {
+	public Role() {
 	
 	}
 
@@ -44,10 +44,10 @@ public class Rol {
 	 * @param id_rol
 	 * @param nombre
 	 */
-	public Rol(Long id_rol, String nombre) {
+	public Role(Long id_rol, String role) {
 		//super();
 		this.id_rol = id_rol;
-		this.nombre = nombre;
+		this.role = role;
 
 	}
 
@@ -72,14 +72,14 @@ public class Rol {
 	 * @return the nombre
 	 */
 	public String getNombre() {
-		return nombre;
+		return role;
 	}
 
 	/**
 	 * @param nombre the nombre to set
 	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String role) {
+		this.role = role;
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class Rol {
 	//Metodo impresion de datos por consola
 	@Override
 	public String toString() {
-		return "Cliente [id_rol=" + id_rol + ", nombre=" + nombre + "]";
+		return "Cliente [id_rol=" + id_rol + ", role=" + role + "]";
 	}
 	
 	

@@ -45,7 +45,7 @@ public class Usuario  {
 	
     @ManyToOne
     @JoinColumn(name="id_rol")
-    private Rol rol;
+    private Role rol;
     @OneToMany
     @JoinColumn(name="id_usuario")
     private List<Hotel> hotel;
@@ -76,7 +76,8 @@ public class Usuario  {
 	 * @param dni
 	 * @param fecha
 	 */
-	public Usuario(Long id_usuario,String username, String nombre, String apellidos, String email, String password, Blob foto, int telefono, Rol rol) {
+	
+	public Usuario(Long id_usuario,String username, String nombre, String apellidos, String email, String password, Blob foto, int telefono, Role rol) {
 		//super();
 		this.id_usuario = id_usuario;
 		this.username = username;
@@ -204,14 +205,14 @@ public class Usuario  {
 	 * @return the rol
 	 */
 	
-	public Rol getRol() {
+	public Role getRol() {
 		return rol;
 	}
 
 	/**
 	 * @param rol the rol to set
 	 */
-	public void setRol(Rol rol) {
+	public void setRol(Role rol) {
 		this.rol = rol;
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.api.dao.IRolDAO;
-import com.crud.api.dto.Rol;
+import com.crud.api.dto.Role;
 
 
 @Service
@@ -17,25 +17,25 @@ public class RolServiceImpl implements IRolService{
 	IRolDAO iRolDAO;
 
 	@Override
-	public List<Rol> listarRol() {
+	public List<Role> listarRol() {
 		
 		return iRolDAO.findAll();
 	}
 
 	@Override
-	public Rol guardarRol(Rol rol) {
+	public Role guardarRol(Role rol) {
 		
 		return iRolDAO.save(rol);
 	}
 
 	@Override
-	public Rol rolXID(Long id_rol) {
+	public Role rolXID(Long id_rol) {
 		
 		return iRolDAO.findById(id_rol).get();
 	}
 
 	@Override
-	public Rol actualizarRol(Rol rol) {
+	public Role actualizarRol(Role rol) {
 		
 		return iRolDAO.save(rol);
 	}

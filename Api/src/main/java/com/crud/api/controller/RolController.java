@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.crud.api.dto.Rol;
+import com.crud.api.dto.Role;
 import com.crud.api.service.RolServiceImpl;
 
 
@@ -25,20 +25,20 @@ public class RolController {
 	RolServiceImpl rolServiceImpl;
 	
 	@GetMapping("/roles")
-	public List<Rol> listarRoles(){
+	public List<Role> listarRoles(){
 		return rolServiceImpl.listarRol();
 	}
 	
 	@PostMapping("/roles")
-	public Rol salvarRol(@RequestBody Rol rol) {
+	public Role salvarRol(@RequestBody Role rol) {
 		
 		return rolServiceImpl.guardarRol(rol);
 	}
 	
 	@GetMapping("/roles/{id_rol}")
-	public Rol rolXID(@PathVariable(name="id_rol") Long id_rol) {
+	public Role rolXID(@PathVariable(name="id_rol") Long id_rol) {
 		
-		Rol rol_xid= new Rol();
+		Role rol_xid= new Role();
 		
 		rol_xid=rolServiceImpl.rolXID(id_rol);
 		
@@ -48,10 +48,10 @@ public class RolController {
 	}
 	
 	@PutMapping("/roles/{id_rol}")
-	public Rol actualizarRol(@PathVariable(name="id_rol")Long id_rol,@RequestBody Rol rol) {
+	public Role actualizarRol(@PathVariable(name="id_rol")Long id_rol,@RequestBody Role rol) {
 		
-		Rol rol_seleccionado= new Rol();
-		Rol rol_actualizado= new Rol();
+		Role rol_seleccionado= new Role();
+		Role rol_actualizado= new Role();
 		
 		rol_seleccionado= rolServiceImpl.rolXID(id_rol);
 		rol_seleccionado.setNombre(rol.getNombre());

@@ -5,11 +5,11 @@ use proyecto;
 drop table if exists roles;
 create table roles(
 id_rol int auto_increment primary key,
-nombre varchar (50) not null
+role varchar (50) not null
 );
 
-insert into roles (nombre) values ('admin');
-insert into roles (nombre) values ('loser');
+insert into roles (role) values ('ROLE_ADMIN');
+insert into roles (role) values ('ROLE_USER');
 
 drop table if exists usuarios;
 create table usuarios(
@@ -21,9 +21,11 @@ email varchar(50) not null unique,
 password varchar(500) not null,
 foto blob,
 telefono int,
-id_rol int not null,
+id_rol int DEFAULT 2,
 foreign key (id_rol) references roles(id_rol) on delete cascade on update cascade
 );
+
+
 
 insert into usuarios (username,nombre,apellidos,email,password,foto,telefono,id_rol) values ('ivan','Ivan','D. Panetone','ivanhrt@gmail.com','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.',null,659852147,1);
 insert into usuarios (username,nombre,apellidos,email,password,foto,telefono,id_rol) values ('alberto','Alberto','D. God','diosito@gmail.com','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.',null,659852148,1);
