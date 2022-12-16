@@ -5,11 +5,11 @@ use railway;
 drop table if exists roles;
 create table roles(
 id_rol int auto_increment primary key,
-role varchar (50) not null
+nombre varchar (50) not null
 );
 
-insert into roles (role) values ('admin');
-insert into roles (role) values ('user');
+insert into roles (nombre) values ('admin');
+insert into roles (nombre) values ('user');
 
 drop table if exists usuarios;
 create table usuarios(

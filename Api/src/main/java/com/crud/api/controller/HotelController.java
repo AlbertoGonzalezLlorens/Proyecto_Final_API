@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.crud.api.dto.Hotel;
 import com.crud.api.service.HotelServiceImpl;
@@ -44,6 +45,23 @@ public class HotelController {
 
 		return hotel_xid;
 	}
+	
+	@GetMapping("/hoteles/ciudad/{poblacion}")
+	public List<Hotel> hotelXPoblacion(@PathVariable(name="poblacion") String poblacion) {
+	    return hotelServiceImpl.hotelXPoblacion(poblacion);
+	}
+	
+	/*@GetMapping("/hoteles/{id_hotel}")
+	public Hotel hotelXID(@PathVariable(name = "id_hotel") Long id_hotel) {
+
+		Hotel hotel_xid = new Hotel();
+
+		hotel_xid = hotelServiceImpl.hotelXID(id_hotel);
+
+		System.out.println("Hotel XID: " + hotel_xid);
+
+		return hotel_xid;
+	}*/
 
 	@PutMapping("/hoteles/{id_hotel}")
 	public Hotel actualizarHotel(@PathVariable(name = "id_hotel") Long id_hotel,@RequestBody Hotel hotel) {

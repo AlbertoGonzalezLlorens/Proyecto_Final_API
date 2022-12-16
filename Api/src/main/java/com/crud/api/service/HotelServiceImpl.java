@@ -34,6 +34,18 @@ public class HotelServiceImpl implements IHotelService{
 	}
 
 	@Override
+	public List<Hotel> hotelXPoblacion (String poblacion) {
+		
+		return iHotelDAO.findAllByNombre(poblacion);
+	}
+	
+	/*@Override
+	public Hotel hotelXPais (String pais) {
+		
+		return iHotelDAO.findByPais(pais);
+	}*/
+	
+	@Override
 	public Hotel actualizarHotel(Hotel hotel) {
 		
 		return iHotelDAO.save(hotel);
