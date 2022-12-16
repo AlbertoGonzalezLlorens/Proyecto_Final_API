@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,20 +47,15 @@ public class Usuario  {
     @ManyToOne
     @JoinColumn(name="id_rol")
     private Rol rol;
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(mappedBy= "id_registrador", cascade=CascadeType.ALL,  orphanRemoval = true)
     private List<Hotel> hotel;
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(mappedBy= "id_usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
     private List<Reserva> reservas;
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(mappedBy= "usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
     private List<AgreganFavoritos> agregarFavoritos;
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(mappedBy= "usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
     private List<Comentan> comentan;
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(mappedBy= "usuario", cascade=CascadeType.ALL,  orphanRemoval = true)
     private List<Buscan> buscan;
 	
 	//Constructores
@@ -89,7 +85,6 @@ public class Usuario  {
 		this.rol = rol;
 	}
 
-	
 	//Getters y Setters
 	
 

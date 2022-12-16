@@ -2,9 +2,12 @@ package com.crud.api.service;
 
 import static java.util.Collections.emptyList;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.crud.api.dao.IUsuarioDAO;
 import com.crud.api.dto.Usuario;
+import com.crud.api.dto.Rol;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService{
@@ -20,6 +24,8 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService{
 	//Utilizamos los metodos de la interface IUsuarioDAO, es como si instaciaramos.
 	@Autowired
 	IUsuarioDAO iUsuarioDAO;
+	@Autowired
+	RolServiceImpl rolService;
 	
 	public void UsuaioServiceImpl(IUsuarioDAO iUsuarioDAO) {
 		this.iUsuarioDAO = iUsuarioDAO;
@@ -62,8 +68,11 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService{
 		if (usuario == null) {
 			throw new UsernameNotFoundException(username);
 		}
-		return new User(usuario.getUsername(),usuario.getPassword(), emptyList());
+		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre()));
+		return new User(usuario.getUsername(),usuario.getPassword(), authorities);
 	}
+	
 	
 
 }

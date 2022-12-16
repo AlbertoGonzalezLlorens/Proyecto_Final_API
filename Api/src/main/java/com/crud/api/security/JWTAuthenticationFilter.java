@@ -9,6 +9,7 @@ import static com.crud.api.security.Constants.TOKEN_EXPIRATION_TIME;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -19,6 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -55,9 +57,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
 
+		User usuario = (User) auth.getPrincipal();
+		
+		String authorities = usuario.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+		
 		String token = Jwts.builder().setIssuedAt(new Date()).setIssuer((ISSUER_INFO))
-				.setSubject(((User)auth.getPrincipal()).getUsername())
+				.setSubject(usuario.getUsername())
 				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
+				.claim("roles",authorities)
 				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY).compact();
 		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);//devuelve token por cabecera
 		response.getWriter().write("{\"token\": \"" + token + "\"}");//devuelve token por body	

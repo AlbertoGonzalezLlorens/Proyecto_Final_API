@@ -28,7 +28,7 @@ foreign key (id_rol) references roles(id_rol) on delete cascade on update cascad
 
 
 insert into usuarios (username,nombre,apellidos,email,password,foto,telefono,id_rol) values ('ivan','Ivan','D. Panetone','ivanhrt@gmail.com','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.',null,659852147,1);
-insert into usuarios (username,nombre,apellidos,email,password,foto,telefono,id_rol) values ('alberto','Alberto','D. God','diosito@gmail.com','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.',null,659852148,1);
+insert into usuarios (username,nombre,apellidos,email,password,foto,telefono,id_rol) values ('alberto','Alberto','D. God','diosito@gmail.com','$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.',null,659852148,2);
 
 drop table if exists hoteles;
 create table hoteles(
@@ -59,7 +59,7 @@ tipo varchar (10),
 descripcion varchar(300),
 precio double not null,
 foto blob,
-id_hotel int not null,
+id_hotel int,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
 
@@ -71,7 +71,7 @@ create table contactos(
 id_contacto int auto_increment primary key,
 telefono_contacto int,
 email varchar(50) not null,
-id_hotel int not null,
+id_hotel int,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
 
@@ -93,9 +93,9 @@ insert into facturas (fecha_inicio ,fecha_fin,numero_personas,desayuno) values (
 drop table if exists reservas;
 create table reservas(
 id_reserva int auto_increment primary key,
-id_factura int not null,
-id_usuario int not null,
-id_habitacion int not null,
+id_factura int,
+id_usuario int,
+id_habitacion int,
 precio_final double default null,
 foreign key (id_factura) references facturas(id_factura) on delete cascade on update cascade,
 foreign key (id_usuario) references usuarios(id_usuario) on delete cascade on update cascade,
@@ -108,8 +108,8 @@ insert into reservas (id_factura,id_usuario,id_habitacion,precio_final) values (
 drop table if exists agregan_favoritos;
 create table agregan_favoritos(
 id_agregan_favoritos int auto_increment primary key,
-id_usuario int not null,
-id_hotel int not null,
+id_usuario int,
+id_hotel int,
 foreign key (id_usuario) references usuarios(id_usuario) on delete cascade on update cascade,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
@@ -122,8 +122,8 @@ create table comentan(
 id_comenta int auto_increment primary key,
 valoracion int not null,
 comentario varchar(500),
-id_usuario int not null,
-id_hotel int not null,
+id_usuario int,
+id_hotel int,
 foreign key (id_usuario) references usuarios(id_usuario) on delete cascade on update cascade,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
@@ -134,8 +134,8 @@ insert into comentan (valoracion,comentario,id_usuario,id_hotel) values (6,'shit
 drop table if exists buscan;
 create table buscan(
 id_busca int auto_increment primary key,
-id_usuario int not null,
-id_hotel int not null,
+id_usuario int,
+id_hotel int,
 foreign key (id_usuario) references usuarios(id_usuario) on delete cascade on update cascade,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
