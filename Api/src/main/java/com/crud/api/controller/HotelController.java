@@ -1,5 +1,6 @@
 package com.crud.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.crud.api.dto.Contacto;
 import com.crud.api.dto.Hotel;
 import com.crud.api.service.HotelServiceImpl;
+import com.crud.api.service.ContactoServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +26,9 @@ public class HotelController {
 
 	@Autowired
 	HotelServiceImpl hotelServiceImpl;
+	
+	@Autowired
+	ContactoServiceImpl contactoServiceImpl;
 
 	@GetMapping("/hoteles")
 	public List<Hotel> listarRoles() {
@@ -44,6 +51,15 @@ public class HotelController {
 		System.out.println("Hotel XID: " + hotel_xid);
 
 		return hotel_xid;
+	}
+	
+	@GetMapping("/hoteles/contactos/{id_hotel}")
+	public List<Contacto> hotelXContacto(@PathVariable(name = "id_hotel") Long id_hotel) {
+		
+		Hotel hotel_xid = new Hotel();
+
+		hotel_xid = hotelServiceImpl.hotelXID(id_hotel);
+		return hotel_xid.getContacto();
 	}
 	
 	@GetMapping("/hoteles/ciudad/{poblacion}")

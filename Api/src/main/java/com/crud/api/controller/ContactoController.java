@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.crud.api.dto.Contacto;
 import com.crud.api.service.ContactoServiceImpl;
+import com.crud.api.service.HotelServiceImpl;
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +22,7 @@ public class ContactoController {
 
 	@Autowired
 	ContactoServiceImpl contactoServiceImpl;
-
+	
 	@GetMapping("/contactos")
 	public List<Contacto> listarRoles() {
 		return contactoServiceImpl.listarContacto();
@@ -44,6 +45,7 @@ public class ContactoController {
 
 		return contacto_xid;
 	}
+	
 
 	@PutMapping("/contactos/{id_contacto}")
 	public Contacto actualizarContacto(@PathVariable(name = "id_contacto") Long id_contacto,@RequestBody Contacto contacto) {

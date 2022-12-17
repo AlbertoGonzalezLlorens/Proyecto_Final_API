@@ -37,8 +37,9 @@ public class Rol {
 	//Constructores
 	
 	public Rol() {
-	
+		
 	}
+	
 
 	/**
 	 * @param id_rol

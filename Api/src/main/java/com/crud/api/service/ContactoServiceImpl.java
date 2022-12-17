@@ -32,7 +32,7 @@ public class ContactoServiceImpl implements IContactoService{
 		
 		return iContactoDAO.findById(id_contacto).get();
 	}
-
+	
 	@Override
 	public Contacto actualizarContacto(Contacto contacto) {
 		
