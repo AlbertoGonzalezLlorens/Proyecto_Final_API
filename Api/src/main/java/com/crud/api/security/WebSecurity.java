@@ -2,6 +2,10 @@ package com.crud.api.security;
 
 import static com.crud.api.security.Constants.LOGIN_URL;
 import static com.crud.api.security.Constants.REGISTER_URL;
+import static com.crud.api.security.Constants.HOTELES_URL;
+import static com.crud.api.security.Constants.HABITACIONES_URL;
+import static com.crud.api.security.Constants.CONTACTO_URL;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,6 +52,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers(HttpMethod.POST, REGISTER_URL).permitAll()
+			.antMatchers(HttpMethod.GET, HOTELES_URL).permitAll()
+			.antMatchers(HttpMethod.GET, HABITACIONES_URL).permitAll()
+			.antMatchers(HttpMethod.GET, CONTACTO_URL).permitAll()
 			.antMatchers(HttpMethod.OPTIONS, "/**").authenticated()
 	        .antMatchers(HttpMethod.GET,"/**").authenticated()
 	        .antMatchers(HttpMethod.POST,"/**").authenticated()
