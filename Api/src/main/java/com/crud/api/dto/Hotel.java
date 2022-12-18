@@ -50,6 +50,10 @@ public class Hotel {
 	private double longitud;
 	@Column(name = "latitud")//no hace falta si se llama igual
 	private double latitud;
+	@Column(name = "desayuno")//no hace falta si se llama igual
+	private boolean desayuno;
+	@Column(name = "precio_min")//no hace falta si se llama igual
+	private double precio_min;
 	
     @ManyToOne
     @JoinColumn(name="id_registrador")
@@ -84,14 +88,23 @@ public class Hotel {
 	 * @param categoria
 	 * @param todos los otros
 	 */
-	public Hotel(Long id_hotel, String nombre, String descripcion, int categoria,  Blob foto, String pais, String provincia, String poblacion, String direccion, int codigo_postal, double longitud, double latitud, Usuario id_registrador) {
+	public Hotel(Long id_hotel, String nombre, String descripcion, int categoria,  Blob foto, String pais, String provincia, String poblacion, String direccion, int codigo_postal, double longitud, double latitud, boolean desayuno, double precio_min, Usuario id_registrador) {
 		//super();
 		this.id_hotel = id_hotel;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.categoria = categoria;
 		this.foto = foto;
+		this.pais=pais;
+		this.provincia=provincia;
+		this.poblacion=poblacion;
+		this.direccion=direccion;
+		this.codigo_postal=codigo_postal;
+		this.longitud=longitud;
+		this.latitud=latitud;
+		this.desayuno=desayuno;
 		this.id_registrador=id_registrador;
+		this.precio_min=precio_min;
 	}
 
 	
@@ -267,6 +280,35 @@ public class Hotel {
 	public void setLatitud(double latitud) {
 		this.latitud = latitud;
 	}
+	
+	/**
+	 * @return the latitud
+	 */
+	public boolean getDesayuno() {
+		return desayuno;
+	}
+
+	/**
+	 * @param latitud the latitud to set
+	 */
+	public void setDesayuno(boolean desayuno) {
+		this.desayuno = desayuno;
+	}
+
+	/**
+	 * @return the latitud
+	 */
+	public double getPrecioMin() {
+		return precio_min;
+	}
+
+	/**
+	 * @param latitud the latitud to set
+	 */
+	public void setPrecioMin(double precio_min) {
+		this.precio_min = precio_min;
+	}
+	
 
 	/**
 	 * @return the id_registrador
@@ -372,7 +414,7 @@ public class Hotel {
 		return "Hotel [id_hotel=" + id_hotel + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria="
 				+ categoria + ", foto=" + foto + ", pais=" + pais + ", provincia=" + provincia + ", poblacion="
 				+ poblacion + ", direccion=" + direccion + ", codigo_postal=" + codigo_postal + ", longitud=" + longitud
-				+ ", latitud=" + latitud + ", id_registrador=" + id_registrador + "]";
+				+ ", latitud=" + latitud + ", desayuno=" + desayuno + ", precio_min=" + precio_min + ", id_registrador=" + id_registrador + "]";
 	}
 
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crud.api.dto.Contacto;
+import com.crud.api.dto.Habitacion;
 import com.crud.api.dto.Hotel;
 import com.crud.api.service.HotelServiceImpl;
 import com.crud.api.service.ContactoServiceImpl;
@@ -32,6 +33,7 @@ public class HotelController {
 
 	@GetMapping("/hoteles")
 	public List<Hotel> listarRoles() {
+		
 		return hotelServiceImpl.listarHotel();
 	}
 
@@ -62,6 +64,78 @@ public class HotelController {
 		return hotel_xid.getContacto();
 	}
 	
+	@GetMapping("/hoteles/categoria/{categoria}")
+	public List<Hotel> hotelXCategoria(@PathVariable(name = "categoria") int categoria) {
+		
+		List<Hotel> todohoteles = new ArrayList<Hotel>();
+		List<Hotel> hoteles_categoria = new ArrayList<Hotel>();
+		
+		todohoteles = hotelServiceImpl.listarHotel();
+		
+		for(Hotel hotel:todohoteles) {
+			if(hotel.getCategoria()==categoria) {
+				hoteles_categoria.add(hotel);
+			}
+		}
+
+		return hoteles_categoria;
+	}
+	
+	@GetMapping("/hoteles/desayuno/yes")
+	public List<Hotel> hotelXDesayuno() {
+		
+		List<Hotel> todohoteles = new ArrayList<Hotel>();
+		List<Hotel> hoteles_desayuno = new ArrayList<Hotel>();
+		
+		
+		todohoteles = hotelServiceImpl.listarHotel();
+		
+		for(Hotel hotel:todohoteles) {
+			if(hotel.getDesayuno()==true) {
+				hoteles_desayuno.add(hotel);
+			}
+		}
+
+		return hoteles_desayuno;
+	}
+	
+	@GetMapping("/hoteles/desayuno/no")
+	public List<Hotel> hotelXDesayunoNo() {
+		
+		List<Hotel> todohoteles = new ArrayList<Hotel>();
+		List<Hotel> hoteles_desayuno = new ArrayList<Hotel>();
+		
+		
+		todohoteles = hotelServiceImpl.listarHotel();
+		
+		for(Hotel hotel:todohoteles) {
+			if(hotel.getDesayuno()==false) {
+				hoteles_desayuno.add(hotel);
+			}
+		}
+
+		return hoteles_desayuno;
+	}
+	
+	@GetMapping("/hoteles/precio/{precio}")
+	public List<Hotel> hotelXPrecio(@PathVariable(name = "precio") double precio) {
+		
+		List<Hotel> todohoteles = new ArrayList<Hotel>();
+		List<Hotel> hoteles_precio = new ArrayList<Hotel>();
+		
+		
+		todohoteles = hotelServiceImpl.listarHotel();
+		
+		for(Hotel hotel:todohoteles) {
+			if(hotel.getPrecioMin()<=precio) {
+				hoteles_precio.add(hotel);
+			}
+		}
+
+		return hoteles_precio;
+	}
+	
+	
 	@GetMapping("/hoteles/ciudad/{poblacion}")
 	public List<Hotel> hotelXPoblacion(@PathVariable(name="poblacion") String poblacion) {
 	    return hotelServiceImpl.hotelXPoblacion(poblacion);
@@ -85,6 +159,8 @@ public class HotelController {
 		hotel_seleccionado.setCodigo_postal(hotel.getCodigo_postal());
 		hotel_seleccionado.setLongitud(hotel.getLongitud());
 		hotel_seleccionado.setLatitud(hotel.getLatitud());
+		hotel_seleccionado.setDesayuno(hotel.getDesayuno());
+		hotel_seleccionado.setPrecioMin(hotel.getPrecioMin());
 		hotel_seleccionado.setId_registrador(hotel.getId_registrador());
 		
 		hotel_actualizado = hotelServiceImpl.actualizarHotel(hotel_seleccionado);
