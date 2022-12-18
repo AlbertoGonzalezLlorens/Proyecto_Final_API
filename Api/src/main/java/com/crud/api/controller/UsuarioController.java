@@ -113,6 +113,41 @@ public class UsuarioController {
 		return usuario_actualizado;
 	}
 	
+	@PutMapping("/usuarios/front/{id_usuario}")
+	public Usuario actualizarUsuarioFront(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody Usuario usuario) {
+		
+		Usuario usuario_seleccionado= new Usuario();
+		Usuario usuario_actualizado= new Usuario();
+		
+		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
+		usuario_seleccionado.setUsername(usuario.getUsername());
+		usuario_seleccionado.setNombre(usuario.getNombre());
+		usuario_seleccionado.setApellidos(usuario.getApellidos());
+		usuario_seleccionado.setEmail(usuario.getEmail());
+		
+		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
+		
+		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
+		
+		return usuario_actualizado;
+	}
+	
+	@PutMapping("/usuarios/foto/{id_usuario}")
+	public Usuario actualizarUsuarioFo(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody Usuario usuario) {
+		
+		Usuario usuario_seleccionado= new Usuario();
+		Usuario usuario_actualizado= new Usuario();
+		
+		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
+		usuario_seleccionado.setFoto(usuario.getFoto());
+		
+		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
+		
+		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
+		
+		return usuario_actualizado;
+	}
+	
 	@DeleteMapping("/usuarios/{id_usuario}")
 	public void eleiminarUsuario(@PathVariable(name="id_usuario")Long id_usuario) {
 		usuarioServiceImpl.eliminarUsuario(id_usuario);
