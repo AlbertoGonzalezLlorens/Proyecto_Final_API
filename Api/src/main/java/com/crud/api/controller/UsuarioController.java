@@ -1,5 +1,6 @@
 package com.crud.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,23 @@ public class UsuarioController {
 		System.out.println("Rol XID: "+id_usuario);
 		
 		return usuario_xid;
+	}
+	
+	@GetMapping("/usuarios/username/{username}")
+	public List<Usuario> usuarioXusername(@PathVariable(name="username") String username) {
+		
+		List<Usuario> all_users = new ArrayList<Usuario>();
+		List<Usuario> users_username = new ArrayList<Usuario>();
+		
+		all_users=usuarioServiceImpl.listarUsuario();
+		
+		for(Usuario user : all_users ) {
+			if (user.getUsername().equals(username)) {
+				users_username.add(user);
+			}
+		}
+		
+		return users_username;
 	}
 	
 	@PostMapping("/usuarios/")

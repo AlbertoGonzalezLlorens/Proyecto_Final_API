@@ -66,18 +66,6 @@ public class HotelController {
 	public List<Hotel> hotelXPoblacion(@PathVariable(name="poblacion") String poblacion) {
 	    return hotelServiceImpl.hotelXPoblacion(poblacion);
 	}
-	
-	/*@GetMapping("/hoteles/{id_hotel}")
-	public Hotel hotelXID(@PathVariable(name = "id_hotel") Long id_hotel) {
-
-		Hotel hotel_xid = new Hotel();
-
-		hotel_xid = hotelServiceImpl.hotelXID(id_hotel);
-
-		System.out.println("Hotel XID: " + hotel_xid);
-
-		return hotel_xid;
-	}*/
 
 	@PutMapping("/hoteles/{id_hotel}")
 	public Hotel actualizarHotel(@PathVariable(name = "id_hotel") Long id_hotel,@RequestBody Hotel hotel) {

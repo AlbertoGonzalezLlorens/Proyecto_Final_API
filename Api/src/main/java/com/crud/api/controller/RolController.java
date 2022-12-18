@@ -47,6 +47,8 @@ public class RolController {
 		return rol_xid;
 	}
 	
+	
+	
 	@PutMapping("/roles/{id_rol}")
 	public Rol actualizarRol(@PathVariable(name="id_rol")Long id_rol,@RequestBody Rol rol) {
 		
