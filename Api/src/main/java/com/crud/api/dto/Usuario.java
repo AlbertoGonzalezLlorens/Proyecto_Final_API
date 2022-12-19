@@ -63,7 +63,14 @@ public class Usuario  {
 	public Usuario() {
 	
 	}
-
+	
+	public Usuario(String nombre, String apellidos, String email, int telefono) {
+		//super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.telefono = telefono;
+	}
 	/**
 	 * @param id
 	 * @param nombre
