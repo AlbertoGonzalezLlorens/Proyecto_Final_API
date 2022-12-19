@@ -1,5 +1,6 @@
 package com.crud.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,22 @@ public class ReservaController {
 		System.out.println("Reserva XID: " + reserva_xid);
 
 		return reserva_xid;
+	}
+	
+	@GetMapping("/reservas/usuario/{username}")
+	public List<Reserva> reservaXusername(@PathVariable(name = "username") String username) {
+
+		List<Reserva> reservas = new ArrayList<Reserva>();
+		List<Reserva> reservas_username = new ArrayList<Reserva>();
+
+		reservas = reservaServiceImpl.listarReserva();
+		
+		for (Reserva reserva:reservas) {
+			if(reserva.getId_usuario().getUsername().equals(username)) {
+				reservas_username.add(reserva);
+			}
+		}
+		return reservas_username;
 	}
 
 	@PutMapping("/reservas/{id_reserva}")
