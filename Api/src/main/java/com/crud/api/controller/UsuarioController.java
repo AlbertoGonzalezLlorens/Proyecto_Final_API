@@ -102,7 +102,7 @@ public class UsuarioController {
 		usuario_seleccionado.setNombre(usuario.getNombre());
 		usuario_seleccionado.setApellidos(usuario.getApellidos());
 		usuario_seleccionado.setEmail(usuario.getEmail());
-		usuario_seleccionado.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+		usuario_seleccionado.setPassword(usuario.getPassword());
 		usuario_seleccionado.setFoto(usuario.getFoto());
 		usuario_seleccionado.setTelefono(usuario.getTelefono());
 		usuario_seleccionado.setRol(usuario.getRol());
@@ -113,85 +113,7 @@ public class UsuarioController {
 		
 		return usuario_actualizado;
 	}
-	
-	@PutMapping("/usuarios/nombre/{id_usuario}")
-	public Usuario actualizarUsuarioNombre(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody String nombre) {
 		
-		Usuario usuario_seleccionado= new Usuario();
-		Usuario usuario_actualizado= new Usuario();
-		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setNombre(nombre);
-		
-		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
-		
-		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
-		
-		return usuario_actualizado;
-	}
-	
-	@PutMapping("/usuarios/apellidos/{id_usuario}")
-	public Usuario actualizarUsuarioApellidos(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody String apellidos) {
-		
-		Usuario usuario_seleccionado= new Usuario();
-		Usuario usuario_actualizado= new Usuario();
-		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setApellidos(apellidos);
-		
-		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
-		
-		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
-		
-		return usuario_actualizado;
-	}
-	
-	@PutMapping("/usuarios/email/{id_usuario}")
-	public Usuario actualizarUsuarioEmail(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody String email) {
-		
-		Usuario usuario_seleccionado= new Usuario();
-		Usuario usuario_actualizado= new Usuario();
-		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setEmail(email);
-		
-		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
-		
-		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
-		
-		return usuario_actualizado;
-	}
-	@PutMapping("/usuarios/telefono/{id_usuario}")
-	public Usuario actualizarUsuarioTelefono(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody int telefono) {
-		
-		Usuario usuario_seleccionado= new Usuario();
-		Usuario usuario_actualizado= new Usuario();
-		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setTelefono(telefono);
-		
-		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
-		
-		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
-		
-		return usuario_actualizado;
-	}
-	@PutMapping("/usuarios/foto/{id_usuario}")
-	public Usuario actualizarUsuarioFoto(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody Blob foto) {
-		
-		Usuario usuario_seleccionado= new Usuario();
-		Usuario usuario_actualizado= new Usuario();
-		
-		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setFoto(foto);
-		
-		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
-		
-		System.out.println("El usuario actualizado es: "+ usuario_actualizado);
-		
-		return usuario_actualizado;
-	}
-	
 	
 	@DeleteMapping("/usuarios/{id_usuario}")
 	public void eleiminarUsuario(@PathVariable(name="id_usuario")Long id_usuario) {
