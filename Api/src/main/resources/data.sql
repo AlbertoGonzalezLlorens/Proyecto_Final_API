@@ -69,17 +69,61 @@ insert into hoteles (nombre,descripcion,categoria,foto,pais,provincia,poblacion,
 drop table if exists habitaciones;
 create table habitaciones(
 id_habitacion int auto_increment primary key,
-num_habitacion int not null,
-tipo varchar (10),
-descripcion varchar(300),
+num_habitacion int,
+tipo varchar (100),
+descripcion varchar(2000),
 precio double not null,
 foto blob,
 id_hotel int,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
 
-insert into habitaciones (num_habitacion,tipo,descripcion,precio,foto,id_hotel) values (111,'cool','Coolx2',12.35,null,1);
-insert into habitaciones (num_habitacion,tipo,descripcion,precio,foto,id_hotel) values (112,'super cool','super Coolx2',22.35,null,2);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,1);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,1);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,1);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,2);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,2);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,2);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,3);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,3);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,3);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,4);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,4);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,4);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,5);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,5);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,5);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,6);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,6);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,6);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,7);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,7);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,7);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,8);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,8);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,8);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,9);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,9);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,9);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,10);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,10);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,10);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,11);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,11);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,11);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,12);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,12);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,12);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,13);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,13);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,13);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,14);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,14);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,14);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Estándar','Habitación sencilla sin sobrecoste',0,null,15);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('EstándarPlus','Habitación con acceso a la piscina y el gimnasio del hotel',15,null,15);
+insert into habitaciones (tipo,descripcion,precio,foto,id_hotel) values ('Suite','Habitación de lujo, con todas las comodidades del hotel incluidas',30,null,15);
+
 
 drop table if exists contactos;
 create table contactos(

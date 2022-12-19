@@ -1,5 +1,6 @@
 package com.crud.api.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.crud.api.dto.Habitacion;
+import com.crud.api.dto.Hotel;
 import com.crud.api.service.HabitacionServiceImpl;
 
 @RestController
@@ -43,6 +45,24 @@ public class HabitacionController {
 		System.out.println("Habitacion XID: "+habitacion_xid);
 		
 		return habitacion_xid;
+	}
+	
+	@GetMapping("/habitaciones/hotel/{id_hotel}")
+	public List<Habitacion> habitacionXHotel(@PathVariable(name = "id_hotel") Long id_hotel) {
+		
+		List<Habitacion> todohabitaciones = new ArrayList<Habitacion>();
+		List<Habitacion> habitaciones = new ArrayList<Habitacion>();
+		
+		
+		todohabitaciones = habitacionServiceImpl.listarHabitacion();
+		
+		for(Habitacion habitacion:todohabitaciones) {
+			if(habitacion.getHotel().getId_hotel()==id_hotel) {
+				habitaciones.add(habitacion);
+			}
+		}
+
+		return habitaciones;
 	}
 	
 	@PutMapping("/habitaciones/{id_habitacion}")
