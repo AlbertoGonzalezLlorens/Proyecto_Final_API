@@ -2,6 +2,9 @@ package com.crud.api.security;
 
 import static com.crud.api.security.Constants.LOGIN_URL;
 import static com.crud.api.security.Constants.REGISTER_URL;
+
+import java.util.Arrays;
+
 import static com.crud.api.security.Constants.HOTELES_URL;
 import static com.crud.api.security.Constants.HABITACIONES_URL;
 import static com.crud.api.security.Constants.CONTACTO_URL;
@@ -71,8 +74,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(Arrays.asList("*"));
+		configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
+		configuration.setAllowedHeaders(Arrays.asList("authorization","content-type","x-auth-token"));
+		configuration.setExposedHeaders(Arrays.asList("x-auth-token"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
 		return source;
 	}
 	
