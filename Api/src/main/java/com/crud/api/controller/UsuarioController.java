@@ -114,19 +114,16 @@ public class UsuarioController {
 		return usuario_actualizado;
 	}
 	
-	@PutMapping("/usuarios/sinrol/{id_usuario}")
+	@PutMapping("/usuarios/solo/{id_usuario}")
 	public Usuario actualizarUsuarioSinRol(@PathVariable(name="id_usuario")Long id_usuario,@RequestBody Usuario usuario) {
 		
 		Usuario usuario_seleccionado= new Usuario();
 		Usuario usuario_actualizado= new Usuario();
 		
 		usuario_seleccionado= usuarioServiceImpl.usuarioXID(id_usuario);
-		usuario_seleccionado.setUsername(usuario.getUsername());
 		usuario_seleccionado.setNombre(usuario.getNombre());
 		usuario_seleccionado.setApellidos(usuario.getApellidos());
 		usuario_seleccionado.setEmail(usuario.getEmail());
-		usuario_seleccionado.setPassword(usuario.getPassword());
-		usuario_seleccionado.setFoto(usuario.getFoto());
 		usuario_seleccionado.setTelefono(usuario.getTelefono());
 
 		usuario_actualizado = usuarioServiceImpl.actualizarUsuario(usuario_seleccionado);
