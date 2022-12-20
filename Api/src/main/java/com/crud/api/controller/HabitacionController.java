@@ -57,7 +57,8 @@ public class HabitacionController {
 		todohabitaciones = habitacionServiceImpl.listarHabitacion();
 		
 		for(Habitacion habitacion:todohabitaciones) {
-			if(habitacion.getHotel().getId_hotel()==id_hotel) {
+			if(habitacion.getHotel()==null){}
+			else if(habitacion.getHotel().getId_hotel()==id_hotel) {
 				habitaciones.add(habitacion);
 			}
 		}
