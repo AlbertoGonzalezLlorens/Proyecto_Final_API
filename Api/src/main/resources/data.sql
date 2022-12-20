@@ -135,8 +135,21 @@ id_hotel int,
 foreign key (id_hotel) references hoteles(id_hotel) on delete cascade on update cascade
 );
 
-insert into contactos (telefono_contacto,email,id_hotel) values (11123456,'email 1',1);
-insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'email 2',2);
+insert into contactos (telefono_contacto,email,id_hotel) values (11123456,'info@silken.com',1);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@bastardo.com',2);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@escondido.com',3);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@urban.com',4);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@breathless.com',5);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@mimosa.com',6);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@oneandonly.com',7);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@smart.com',8);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@doubletree.com',9);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@baobab.com',10);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@themint.com',11);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@osais.com',12);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@ayre.com',13);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@ocean.com',14);
+insert into contactos (telefono_contacto,email,id_hotel) values (11245789,'info@mousai.com',15);
 
 drop table if exists facturas;
 create table facturas(
