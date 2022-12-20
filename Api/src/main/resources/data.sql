@@ -75,7 +75,7 @@ descripcion varchar(2000),
 precio double not null,
 foto blob,
 id_hotel int,
-foreign key (id_hotel) references hoteles(id_hotel) on delete NO ACTION on update cascade
+foreign key (id_hotel) references hoteles(id_hotel) on delete no action on update cascade
 );
 
 insert into habitaciones (num_habitacion,tipo,descripcion,precio,foto,id_hotel) values (111,'Estándar','Habitación sencilla sin sobrecoste',0,null,1);
