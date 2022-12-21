@@ -141,7 +141,7 @@ public class HotelController {
 	    return hotelServiceImpl.hotelXPoblacion(poblacion);
 	}
 	
-	@GetMapping("/hoteles/{poblacion}/{pais}/{precio}/{desayuno}/{categoria}")
+	@GetMapping("/filtro/{poblacion}/{pais}/{precio}/{desayuno}/{categoria}")
 	public List<Hotel> hotelXFiltro(@PathVariable(name = "poblacion") String poblacion,
 			@PathVariable(name = "pais") String pais, @PathVariable(name = "precio") double precio, 
 			@PathVariable(name = "desayuno") String desayuno, @PathVariable(name = "categoria") double categoria) {
