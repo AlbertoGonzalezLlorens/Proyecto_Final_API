@@ -55,7 +55,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL,REGISTER_URL).permitAll()
 			.antMatchers(HttpMethod.GET, HOTELES_URL,HABITACIONES_URL,CONTACTO_URL,"/api/hoteles/contactos/**"
-					,"/api/hoteles/categoria/**","/api/hoteles/desayuno/**","/api/hoteles/precio/**","/api/habitaciones/hotel/**","/api/filtro/**").permitAll()
+					,"/api/hoteles/categoria/**","/api/hoteles/desayuno/**","/api/hoteles/precio/**","/api/habitaciones/hotel/**","/api/hoteles/**","/api/filtro/**").permitAll()
 			.antMatchers(HttpMethod.OPTIONS, "/**").authenticated()
 	        .antMatchers(HttpMethod.GET,"/**").authenticated()
 	        .antMatchers(HttpMethod.POST,"/**").authenticated()
