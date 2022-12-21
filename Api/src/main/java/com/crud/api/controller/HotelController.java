@@ -140,6 +140,274 @@ public class HotelController {
 	public List<Hotel> hotelXPoblacion(@PathVariable(name="poblacion") String poblacion) {
 	    return hotelServiceImpl.hotelXPoblacion(poblacion);
 	}
+	
+	@GetMapping("/hoteles/{poblacion}/{pais}/{precio}/{desayuno}/{categoria}")
+	public List<Hotel> hotelXFiltro(@PathVariable(name = "poblacion") String poblacion,
+			@PathVariable(name = "pais") String pais, @PathVariable(name = "precio") double precio, 
+			@PathVariable(name = "desayuno") String desayuno, @PathVariable(name = "categoria") double categoria) {
+
+		List<Hotel> todohoteles = new ArrayList<Hotel>();
+		List<Hotel> hoteles_filtrados = new ArrayList<Hotel>();
+
+		todohoteles = hotelServiceImpl.listarHotel();
+		
+		for(Hotel hotel:todohoteles) {
+			//Solo1
+			if(poblacion.equals("a") && pais.equals("a") && precio <=0 && desayuno.equals("a") && categoria>0) {
+				if(hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio <=0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio <=0 && desayuno.equals("no") &&categoria==0){
+				if(hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPrecioMin()<=precio) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPais().equals(pais)) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion)) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//2 a
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais)) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//2b
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPais().equals(pais) && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPais().equals(pais) && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//2c
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPrecioMin()<=precio && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//2d
+			
+			else if(poblacion.equals("a") && pais.equals("a") && precio==0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getCategoria()==categoria && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio==0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getCategoria()==categoria && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3a			
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("a") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getCategoria()<=categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3b
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3c
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getCategoria()==categoria && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getCategoria()==categoria && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3d
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()==precio && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()==precio && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()==precio && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3e
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//3f
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//4a
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("no") && categoria==0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("a") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//4b
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio<=0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//4c
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//4d
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			//5
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("yes") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==true && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+			else if(!poblacion.equals("a") && !pais.equals("a") && precio>0 && desayuno.equals("no") && categoria>0){
+				if(hotel.getPoblacion().equals(poblacion) && hotel.getPais().equals(pais) && hotel.getPrecioMin()<=precio && hotel.getDesayuno()==false && hotel.getCategoria()==categoria) {
+					hoteles_filtrados.add(hotel);
+				}
+			}
+		}
+
+		return hoteles_filtrados;
+	}
 
 	@PutMapping("/hoteles/{id_hotel}")
 	public Hotel actualizarHotel(@PathVariable(name = "id_hotel") Long id_hotel,@RequestBody Hotel hotel) {
